@@ -137,3 +137,10 @@ export function cookieOptions(secure: boolean, maxAge?: number) {
     ...(typeof maxAge === 'number' ? { maxAge } : {}),
   }
 }
+export function getVariant(visitorId: string): 'A' | 'B' {
+  let hash = 0;
+  for (let i = 0; i < visitorId.length; i++) {
+    hash += visitorId.charCodeAt(i);
+  }
+  return hash % 2 === 0 ? 'A' : 'B'; 
+}
