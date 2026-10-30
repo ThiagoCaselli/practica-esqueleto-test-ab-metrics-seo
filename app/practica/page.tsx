@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import { cookies } from 'next/headers';
-import { getVariant } from '../../lib/experiment';
-import Cta from '../../components/cta';
-import { pool } from '../../lib/db'; 
+import { getVariant } from '@/lib/experiment';
+import Cta from '@/components/cta';
+import { pool } from '@/lib/db';
 
 type Props = {
   searchParams: { preview?: string };
@@ -50,10 +50,8 @@ export default async function PracticaPage({ searchParams }: Props) {
   } else if (visitorId) {
     variant = getVariant(visitorId);
     
-    // REGISTRO DE IMPRESIÓN EN BASE DE DATOS
     if (!preview) {
       try {
-        // Validar: Una impresión por sesión de 30 minutos[cite: 3].
         const check = await pool.query(
           `SELECT 1 FROM impresiones 
            WHERE visitor_id = $1 
@@ -78,26 +76,55 @@ export default async function PracticaPage({ searchParams }: Props) {
   const isVariantA = variant === 'A';
 
   return (
-    <main style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1>
-        {isVariantA
-          ? 'Ocho semanas para un oficio que se puede cobrar.'
-          : 'El curso empieza el 14 de abril. El cupo, no.'} 
-      </h1>
-      
-      <section style={{ margin: '2rem 0' }}>
-        <h2>Detalles del programa</h2>
-        <ul>
-          <li>Inicio: 14 de abril</li>
-          <li>Duración: 8 semanas</li>
-          <li>Cupo: 12 personas</li>
-          <li>Oficios: carpintería, electricidad y cocina</li>
-        </ul>
-      </section>
+    <main className="min-h-screen bg-[#1c1511] text-[#a69c95] flex flex-col items-center pt-24 px-6 font-sans">
+      <div className="max-w-2xl w-full flex flex-col gap-8">
+        
+        <div className="uppercase tracking-[0.15em] text-[10px] text-[#8c827a]">
+          LABORATORIO 01 · PRÁCTICA
+        </div>
 
-      <Cta 
-        text={isVariantA ? 'Ver cupos de abril' : 'Reservar mi lugar'} 
-      />
+        <h1 className="font-serif text-4xl md:text-5xl text-[#f2ece4] leading-tight">
+          {isVariantA
+            ? 'Ocho semanas para un oficio que se puede cobrar.'
+            : 'El curso empieza el 14 de abril. El cupo, no.'} 
+        </h1>
+
+        <p className="text-lg leading-relaxed mb-4 text-[#a69c95]">
+          La oferta y el caso de prueba ya están. Acá tenés los detalles para la cohorte actual.
+        </p>
+
+        <div className="flex items-center gap-4">
+          <Cta text={isVariantA ? 'Ver cupos de abril' : 'Reservar mi lugar'} />
+        </div>
+
+        <div className="flex flex-col border-t border-[#362b25] mt-8">
+          
+          <div className="py-6 border-b border-[#362b25] flex flex-col gap-2">
+            <span className="text-[#756a62] text-xs font-mono">01</span>
+            <div>
+              <h3 className="text-[#f2ece4] font-mono text-sm">Inicio y duración</h3>
+              <p className="text-[#a69c95] text-sm mt-1">14 de abril, con una extensión de 8 semanas de práctica real.</p>
+            </div>
+          </div>
+
+          <div className="py-6 border-b border-[#362b25] flex flex-col gap-2">
+            <span className="text-[#756a62] text-xs font-mono">02</span>
+            <div>
+              <h3 className="text-[#f2ece4] font-mono text-sm">Condiciones</h3>
+              <p className="text-[#a69c95] text-sm mt-1">Cupo máximo limitado a 12 personas por grupo.</p>
+            </div>
+          </div>
+
+          <div className="py-6 border-b border-[#362b25] flex flex-col gap-2">
+            <span className="text-[#756a62] text-xs font-mono">03</span>
+            <div>
+              <h3 className="text-[#f2ece4] font-mono text-sm">Oficios</h3>
+              <p className="text-[#a69c95] text-sm mt-1">Carpintería, electricidad y cocina.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </main>
   );
 }

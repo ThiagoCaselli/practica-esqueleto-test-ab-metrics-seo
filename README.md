@@ -1,33 +1,13 @@
-# practica-esqueleto-test-ab-metrics-seo
+# Laboratorio: Test A/B, Métricas y SEO técnico (TP8)
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+Proyecto desarrollado para la materia Programación Avanzada (UADER FCyT), implementando un experimento A/B determinístico con Next.js (App Router), TypeScript y persistencia en PostgreSQL.
 
-## Built with v0
+## 🚀 Rutas Principales
+Una vez que el servidor esté corriendo en local (`http://localhost:3000`), podés acceder a:
+* **Landing del Experimento:** [http://localhost:3000/practica](http://localhost:3000/practica)
+* **Bitácora y Métricas:** [http://localhost:3000/bitacora](http://localhost:3000/bitacora)
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
-
-[Continue working on v0 →](https://v0.app/chat/projects/prj_doZJN4YzGEwGJ1oaIqLMCknlQsWa)
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+## 🛠️ Stack Tecnológico
+* Next.js (App Router) & TypeScript
+* PostgreSQL & Node-Postgres (`pg`)
+* Tailwind / Estilos personalizados
