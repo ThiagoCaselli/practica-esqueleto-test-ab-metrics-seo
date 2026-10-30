@@ -25,7 +25,6 @@ La asignación de variantes se realiza mediante una función determinística bas
 ---
 
 ## 3. Bitácora y Cálculos Manuales
-*(A continuación se adjunta la captura de pantalla de la ruta `/bitacora` con el caso de prueba fijo evaluado y los cálculos manuales incorporados al margen).*
+
 
 ![Captura de Bitácora y Cálculos](assets/captura-bitacora.png)
-*(Nota: Asegurate de subir la imagen de tu captura a una carpeta en el repositorio, por ejemplo `/assets/captura-bitacora.png`, y reemplazar la ruta de arriba para que se visualice correctamente).*
